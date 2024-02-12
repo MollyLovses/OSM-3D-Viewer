@@ -3,7 +3,7 @@
 The Interactive Map 3D Visualization project offers a dynamic and immersive experience for exploring geographical data in a three-dimensional environment. Leveraging the power of WebGL and the Three.js library, this project provides users with an interactive map viewing experience.
 
 
-https://github.com/MollyLovses/OSM-3D-Viewer/assets/96005820/e48411b9-b113-4a0c-ac83-ac0377a18aaf
+https://github.com/MollyLovses/OSM-3D-Viewer/assets/96005820/82ab681f-de21-4b49-8f7f-dadfa84060de
 
 
 ## Features
