@@ -47,5 +47,9 @@ Users can interact with the map using controls such as zooming, panning, and rot
 - GeoTIFF: A JavaScript library for reading and manipulating GeoTIFF files.
 - OpenStreetMap Data: Geographic data obtained from OpenStreetMap, used for rendering map features.
 
+## Credits
+- This project makes use of open-source libraries and data sources, including Three.js and OpenStreetMap.
+- This project makes use of "Apex - Angular 14+ & Bootstrap 4 HTML Admin Template" UI elements.
+
 ## Link
 https://sergeyforever.online/osm-3d-viewer/
