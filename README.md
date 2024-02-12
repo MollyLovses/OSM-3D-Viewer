@@ -2,6 +2,8 @@
 
 The Interactive Map 3D Visualization project offers a dynamic and immersive experience for exploring geographical data in a three-dimensional environment. Leveraging the power of WebGL and the Three.js library, this project provides users with an interactive map viewing experience.
 
+![osm1](https://github.com/MollyLovses/OSM-3D-Viewer/assets/96005820/3c417af9-180c-498b-970f-2c7a1e152cee)
+
 ## Features
 
 ### 1. Detailed Building Rendering
@@ -14,7 +16,7 @@ Display dynamic roads and streets on the map based on OSM.
 Woodlands can be loaded with height information for each tree type.
 
 ### 4. Realistic Water Bodies
-Visualize lakes, rivers, and other water bodies using advanced water shaders.
+Visualize lakes, rivers, and other water bodies using switchable advanced water shaders.
 
 ### 5. Interactive Controls
 Users can interact with the map using controls such as zooming, panning, and rotating. These interactive features enable users to explore the map from different perspectives and angles.
