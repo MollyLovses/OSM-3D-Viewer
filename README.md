@@ -6,9 +6,6 @@ The Interactive Map 3D Visualization project offers a dynamic and immersive expe
 https://github.com/MollyLovses/OSM-3D-Viewer/assets/96005820/82ab681f-de21-4b49-8f7f-dadfa84060de
 
 
-## Link
-https://sergeyforever.online/osm-3d-viewer/
-
 ## Features
 
 ### 1. Detailed Building Rendering
@@ -49,3 +46,6 @@ Users can interact with the map using controls such as zooming, panning, and rot
 - Three.js: A JavaScript library for building 3D graphics on the web.
 - GeoTIFF: A JavaScript library for reading and manipulating GeoTIFF files.
 - OpenStreetMap Data: Geographic data obtained from OpenStreetMap, used for rendering map features.
+
+## Link
+https://sergeyforever.online/osm-3d-viewer/
