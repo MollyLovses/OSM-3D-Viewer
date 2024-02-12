@@ -1,0 +1,430 @@
+/*=========================================================================================
+	Item Name: Open Street Map Stand
+	Module: style.css
+	Version: 1.0
+	Author: Sergey Patokin
+    Last Update: 02.08.2024
+	Author URL: https://sergeyforever.online/
+    Landscape GeoJson Map: https://overpass-turbo.eu/#
+    Landscape Depth Map: https://portal.opentopography.org/apidocs/#/Public/getGlobalDem
+===========================================================================================*/
+
+:root {
+  --interface-text-color: #ccc;
+  --interface-color1: #07d4db;
+  --interface-color2: #ccc;
+  --interface-color3: #24272a;
+  --light-interface-color3: #fff;
+}
+
+#info {
+  font-family: 'arial';
+  position: absolute;
+  margin: 20px;
+  font-size: 12px;
+  color: white;
+  user-select: none;
+  bottom: 0;
+}
+
+/* //////////////////// Scroll Bar //////////////////// */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #333;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #666;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Combobox styles */
+select {
+  padding: 3px;
+  font-size: 14px;
+  background-color: #424242;
+  color: #fff;
+  border: 0px;
+  border-radius: 8px;
+  outline: none; /* Remove the default outline */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+select:hover {
+  background-color: #975aff;
+  color: #fff; /* Change the text color on hover */
+}
+
+/* Optional: Style the options inside the combobox */
+option {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Range Input */
+
+.range-input {
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 80%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 6px;
+  background: var(--interface-color2);
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 15px;
+  width: 15px;
+  background-image: linear-gradient(var(--light-interface-color3), var(--interface-color3));
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+.range-input::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-image: linear-gradient(#353b3e, #24272a);
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+.range-input::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 3px 1px #ccc, -7px 0 7px 0.01px var(--interface-color1);
+}
+
+.range-input::-webkit-slider-thumb {
+  box-shadow: 0 0 2px 0.15px var(--interface-color2);
+}
+
+.range-input::-moz-range-thumb:hover {
+  box-shadow: 0 0 2px 0.15px var(--interface-color2);
+}
+
+/* Styles for the widget */
+
+/* Arrow Widget */
+.widget-container {
+  position: absolute;
+  display: flex;
+  z-index: 1;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgb(255, 255, 255);
+  position: absolute;
+  margin-left: 30px;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.arrow.active {
+  cursor: pointer;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+.widget {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 10px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.widget.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+    display: none;
+  }
+}
+
+/* Switch Input */
+
+.switch-input {
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 80%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 6px;
+  background: var(--interface-color2);
+}
+
+.switch-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 15px;
+  width: 50%;
+  background-image: linear-gradient(var(--light-interface-color3), var(--interface-color3));
+  border-radius: 5%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+.switch-input::-moz-range-thumb {
+  height: 15px;
+  width: 50%;
+  background-image: linear-gradient(var(--light-interface-color3), var(--interface-color3));
+  border-radius: 5%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+.switch-input::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 3px 1px #ccc, -7px 0 7px 0.01px var(--interface-color1);
+}
+
+.switch-input::-webkit-slider-thumb {
+  box-shadow: 0 0 2px 0.15px var(--interface-color2);
+}
+
+.switch-input::-moz-range-thumb:hover {
+  box-shadow: 0 0 2px 0.15px var(--interface-color2);
+}
+
+/* Color Input */
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 80%;
+  height: 24px;
+  background-color: var(--interface-color2);
+  cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
+/* UI Interface */
+
+.content {
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  width: 100%;
+  height: 77%;
+}
+
+.main{
+  width: 100%;
+  height: auto;
+  min-width: 50%;
+  min-height: 50%;
+  max-height: 100%;
+}
+
+#threejs-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 50%;
+  min-height: 50%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.right-menu{
+  height: auto;
+  width: 5%;
+  min-width: 80px;
+}
+
+.left-menu{
+  height: auto;
+  width: 15%;
+  min-width: 170px;
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.left-menu .card-body div{
+  font-size: 13px;
+}
+
+.left-menu .card-title{
+  margin: 0;
+}
+
+.footer {
+  width: 100%;
+  height: auto;
+}
+
+.footer .card{
+  height: 14vh;
+  width: auto;
+}
+
+.footer .card-body{
+  margin-top: -10px;
+  height: auto;
+}
+
+html, body {
+  overflow: visible;
+  height: 100%;
+}
+
+.card {
+  border-radius: 5px 0px 0px 5px;
+  margin: 0;
+  max-width: 100%;
+}
+
+.card h6 {
+  user-select: none;
+  font-size: 11px;
+}
+
+img {
+  user-select: none;
+}
+
+span {
+  user-select: none;
+}
+
+@media only screen and (min-width: 500px) and (max-width:1000px) {
+
+  .main{
+    height: auto;
+  }
+
+  #threejs-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .left-menu{
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .left-menu .card-body div{
+    font-size: 11px;
+  }
+
+  .left-menu .card-title{
+    font-size: 14px;
+  }
+
+  .footer .card{
+    height: 25vh;
+    max-height: 100px;
+  }
+
+  /* Scrollbar width */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+  .left-menu{
+    position: absolute;
+    opacity: 0.9;
+    z-index: 1;
+  }
+
+  .left-menu{
+    min-width: 180px;
+    max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+}
+
+/* //////////////////// noUI //////////////////// */
+
+.noUi-marker-horizontal.noUi-marker-large {
+  height: 5px;
+}
+
+.noUi-marker-horizontal.noUi-marker-normal {
+  height: 2px;
+}
+
+.noUi-value-horizontal.noUi-value-large {
+  font-size: 12px;
+}
+
+.noUi-handle-horizontal {
+  height: 2px;
+}
+
+.noUi-marker-vertical.noUi-marker-large {
+  width: 5px;
+}
+
+.noUi-marker-vertical.noUi-marker-normal {
+  width: 2px;
+}
+
+.noUi-value-vertical.noUi-value-large {
+  font-size: 12px;
+  margin-left: -12px;
+}
+
+.noUi-handle-vertical {
+  width: 2px;
+}
+
+#pips-range-camY{
+  height: 8px;
+}
+
+.navbar {
+  border: 1px solid #333;
+}
